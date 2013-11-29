@@ -10,25 +10,25 @@
 
 <div id="form_input" class="container">
     <br>
-    <form class="form-horizontal" role="form">
+    <form action="result.jsp" method="post" class="form-horizontal" role="form">
         <div class="form-group">
           <label for="inputSearch" class="col-sm-2 control-label">Search Tweets Keyword</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputSearch" placeholder="Search Keyword">
+            <input type="text" class="form-control" id="inputSearch" name="inputSearch" placeholder="Search Keyword">
             <span class="help-block">Keyword that help you search your desired tweets.</span>
           </div>
         </div>
         <div class="form-group">
           <label for="inputPositive" class="col-sm-2 control-label">Positive Sentiment Keyword(s)</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPositive" placeholder="Positive Sentiment">
+            <input type="text" class="form-control" id="inputPositive" name="inputPositive" placeholder="Positive Sentiment">
             <span class="help-block">You can fill more than one keyword by using semicolon.</span>
           </div>
         </div>
         <div class="form-group">
           <label for="inputNegative" class="col-sm-2 control-label">Negative Sentiment Keyword(s)</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputNegative" placeholder="Negative Sentiment">
+              <input type="text" class="form-control" id="inputNegative" name="inputNegative" placeholder="Negative Sentiment">
             <span class="help-block">You can fill more than one keyword by using semicolon.</span>
           </div>
         </div>
