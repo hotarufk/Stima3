@@ -19,6 +19,7 @@
         
         <%@include file="header.jsp" %>
         <div class="container">
+            <h1>About</h1>
             <p>
                 This is an application to group searched tweets from all user that contain the keyword by the sentiment keyword.<br>
                 Sentiment keyword divided into two groups : positives and negatives.<br>
@@ -29,9 +30,8 @@
         </div>
         <br>
         <div class="container">
-            <p>
-                (Nanti ini profile anggota kelompok)
-            </p>
+            <h1>Project Team Profile</h1>
+            <%@include file="profile.jsp" %>
         </div>
         <%@include file="navigation-about.jsp" %>
     </body>

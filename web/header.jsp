@@ -15,7 +15,7 @@
 <div class="jumbotron">
     <h1>About this project</h1>
     <p>
-        How to use this application and project team profile.
+        Description about this application and project team profile.
     </p>
 </div>
 <%
