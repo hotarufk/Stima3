@@ -84,6 +84,9 @@
         </div>
         <div class="container">
             <br>
+            <h3><b>Search Tweets Keyword :</b> <% out.print(bufferSearch); %></h3><br>
+            <h3><b>Positives Sentiment Keyword(s) :</b> <% out.print(bufferPositive); %></h3><br>
+            <h3><b>Negatives Sentiment Keyword(s) :</b> <% out.print(bufferNegative); %></h3><br>
             <h1>Results</h1>
             <br>
             <%
@@ -107,6 +110,7 @@
                 }
             %>
             <div class="panel-group" id="accordion">
+                <span class="help-block">Click a group title to list the tweets on sentiment group you've clicked. You also can see a tweet directly on twitter.</span>
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
@@ -120,7 +124,7 @@
                       <%
                             for(int i = 0; i < tt.shholder.size(); i++) {
                                 if(tt.shholder.get(i).jenistweet > 0) {
-                                    out.print(tt.shholder.get(i).nama + "<br>" + results.get(i) + "<br><br>");
+                                    out.print(tt.shholder.get(i).nama + "<br>" + results.get(i) + "<br><a href=\"" + tt.shholder.get(i).URL + "\">check this tweet on twitter</a><br><br>");
                                 }
                             }
                       %>
@@ -140,7 +144,7 @@
                       <%
                             for(int i = 0; i < tt.shholder.size(); i++) {
                                 if(tt.shholder.get(i).jenistweet < 0) {
-                                    out.print(tt.shholder.get(i).nama + "<br>" + results.get(i) + "<br><br>");
+                                    out.print(tt.shholder.get(i).nama + "<br>" + results.get(i) + "<br><a href=\"" + tt.shholder.get(i).URL + "\">check this tweet on twitter</a><br><br>");
                                 }
                             }
                       %>
@@ -160,7 +164,7 @@
                       <%
                             for(int i = 0; i < tt.shholder.size(); i++) {
                                 if(tt.shholder.get(i).jenistweet == 0) {
-                                    out.print(tt.shholder.get(i).nama + "<br>" + results.get(i) + "<br><br>");
+                                    out.print(tt.shholder.get(i).nama + "<br>" + results.get(i) + "<br><a href=\"" + tt.shholder.get(i).URL + "\">check this tweet on twitter</a><br><br>");
                                 }
                             }
                       %>
