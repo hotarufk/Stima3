@@ -131,11 +131,23 @@ public class Twitter_testing {
                 Query query = new Query(regex);
                 QueryResult result = twitter.search(query);
                 for (Status status : result.getTweets()) {
-                    searchHandler sh = new searchHandler();
-                    sh.nama =  status.getUser().getScreenName();
-                    sh.tweet = status.getText();
-                    shholder.add(sh);
-                    //System.out.println("@" + sh.nama + ":" + sh.tweet);
+				
+                 searchHandler sh = new searchHandler();
+					sh.nama =  status.getUser().getScreenName();
+					sh.tweet = status.getText();
+					
+					
+					StringBuffer address = new StringBuffer();
+					address.append("http://twitter.com/#!/");
+					address.append(sh.nama);
+					address.append("/status/");
+					address.append(status.getId());
+
+					String theAddressYouWant = address.toString();
+					sh.URL = theAddressYouWant;
+					shholder.add(sh);
+					//System.out.println(theAddressYouWant); ini buat test bener apa ga url nya , udah bener
+					//System.out.println("@" + sh.nama + ":" + sh.tweet);
                 }
             } catch (TwitterException e) {
                 System.out.println("Search tweets: " + e);
