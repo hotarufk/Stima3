@@ -61,6 +61,7 @@ public class Twitter_testing {
 	Twitter twitter;
 	RequestToken requestToken;
 	String[] theSearchTweets = new String[11];
+	
 	//variable buat nyimpen hasil search
 	public Vector<searchHandler> shholder = new Vector<searchHandler>();
 	 
@@ -129,6 +130,9 @@ public class Twitter_testing {
             try {
                 //Twitter twitter = TwitterFactory.getSingleton();
                 Query query = new Query(regex);
+				    query.count(100);
+	    System.out.println(query.getCount());
+				
                 QueryResult result = twitter.search(query);
                 for (Status status : result.getTweets()) {
 				

@@ -1,16 +1,20 @@
-package tweetParser;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class TweetParser {
 	private int sentiment;						//Overall sentimen
 	private List<String> keywords;  			//List keyword untuk pencarian tweet
 	private List<String> positiveWord;  		//List kata2 positif
 	private List<String> negativeWord;  		//List kata2 negatif
+	private List<String> defPositive;
+	private List<String> defNegative;
 	private List<List<Integer> >kmpTable1;   	//Tabel border function KMP untuk keywords
 	private List<List<Integer> >kmpTable2;	 	//Tabel border function KMP untuk positiveWord
 	private List<List<Integer> >kmpTable3;	 	//Tabel border function KMP untuk negativeWord
@@ -25,6 +29,8 @@ public class TweetParser {
 	*/
 	public TweetParser(){
 		keywords = new ArrayList<String>();
+		defPositive = new ArrayList<String>();
+		defNegative = new ArrayList<String>();
 		positiveWord = new ArrayList<String>();
 		negativeWord = new ArrayList<String>();
 		kmpTable1 = new ArrayList<List<Integer> >();
@@ -34,6 +40,25 @@ public class TweetParser {
 		bmTable2 = new ArrayList<Map<Character, Integer> >();
 		bmTable3 = new ArrayList<Map<Character, Integer> >();
 		sentiment = 0;
+		try (BufferedReader reader = new BufferedReader(new FileReader("positive.txt"))) {
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				defPositive.add(line.toLowerCase());
+			}
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+		try (BufferedReader reader = new BufferedReader(new FileReader("negative.txt"))) {
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				defNegative.add(line.toLowerCase());
+			}
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+		
+		
+		
 	}
 	
 	/*
@@ -44,11 +69,15 @@ public class TweetParser {
 		for (String k: key){
 			keywords.add(k.toLowerCase());
 		}
+		positiveWord = new ArrayList(defPositive);
+		negativeWord = new ArrayList(defNegative);
 		for (String p: pos){
-			positiveWord.add(p.toLowerCase());
+			p = p.toLowerCase();
+			if (!positiveWord.contains(p)) positiveWord.add(p);
 		}
 		for (String n: neg){
-			negativeWord.add(n.toLowerCase());
+			n = n.toLowerCase();
+			if (!negativeWord.contains(n)) negativeWord.add(n);
 		}
 		mode = mod;
 		if (mode){
@@ -321,5 +350,6 @@ public class TweetParser {
 		bmTable2.clear();
 		bmTable3.clear();
 		sentiment = 0;
+		
 	}
 }
