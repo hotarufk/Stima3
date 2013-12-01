@@ -73,11 +73,13 @@
                     }
                     List<String> posWords = new ArrayList<String>();
                     for(int i = 0; i < positiveToken.length; i++) {
-                        posWords.add(positiveToken[i]);
+                        if(positiveToken[i].length()>0)
+							posWords.add(positiveToken[i]);
                     }
                     List<String> negWords = new ArrayList<String>();
                     for(int i = 0; i < negativeToken.length; i++) {
-                        negWords.add(negativeToken[i]);
+                        if(positiveToken[i].length()>0)
+							negWords.add(negativeToken[i]);
                     }
                 %>
             </p>
